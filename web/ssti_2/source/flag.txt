@@ -1,0 +1,15 @@
+
+Ahh Nice, I see you could get RCE om my server.
+Here is your flag, you deserved it!
+
+shellmates{REDACTED}
+
+And if you have any improvements or want to point out any of the things I have 
+missed out during the making of this challenge, Contact me at fy_cherief@esi.dz
+
+++++++++++ IMPORTANT +++++++++++
+If you can get a reliable shell om my server, send a screenshot to my address.
+
+
+Good luck!, and well done!.
+++++++++++ IMPORTANT +++++++++++
