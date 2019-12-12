@@ -1,0 +1,10 @@
+version: '3.7'
+services: 
+    web:
+        build: 
+            context: .
+            dockerfile: web50.dockerfile
+        ports: 
+            - '30069:80'
+        stdin_open: true
+        tty: true
