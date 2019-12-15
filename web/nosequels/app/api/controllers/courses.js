@@ -7,13 +7,32 @@ module.exports = {
             if (err) {
                 next(err);
             } else {
-                res.json({
-                    status: "success",
-                    message: "Course Found!",
-                    data: {
-                        course: courseInfo
+                if (courseInfo.owner === 'admin') {
+                    if (req.body.name === 'admin') {
+                        res.json({
+                            status: "success",
+                            message: "Course Found!",
+                            data: {
+                                course: courseInfo
+                            }
+                        });
+                    } else {
+                        res.json({
+                            status: "error",
+                            message: "Can not view this source",
+                            data: null,
+                        });
                     }
-                });
+
+                } else {
+                    res.json({
+                        status: "success",
+                        message: "Course Found!",
+                        data: {
+                            course: courseInfo
+                        }
+                    });
+                }
             }
         })
     },
@@ -25,12 +44,35 @@ module.exports = {
                 next(err);
             } else {
                 for (let course of courses) {
-                    courseList.push({
-                        id: course._id,
-                        name: course.name,
-                        cost: course.cost,
-                        content: course.content
-                    });
+                    if (course.owner !== 'admin') {
+                        courseList.push({
+                            id: course._id,
+                            name: course.name,
+                            cost: course.cost,
+                            content: course.content,
+                            owner: course.owner,
+                        });
+                    } else {
+                        if (req.body.name !== 'admin') {
+                            courseList.push({
+                                id: course._id,
+                                name: course.name,
+                                cost: course.cost,
+                                content: 'You must be admin to see the content of this course!',
+                                owner: course.owner,
+                            });
+                        } else {
+                            courseList.push({
+                                id: course._id,
+                                name: course.name,
+                                cost: course.cost,
+                                content: course.content,
+                                owner: course.owner,
+                            });
+                        }
+
+                    }
+
                 }
                 res.json({
                     status: "success",
