@@ -13,6 +13,13 @@ const CourseSchema = new Schema({
     cost: {
         type: Number,
         default: 10,
+        required: true,
+    },
+    content: {
+        type: String,
+        default: "",
+        trim: true,
+        required: true
     }
 
 });
