@@ -20,6 +20,11 @@ const CourseSchema = new Schema({
         default: "",
         trim: true,
         required: true
+    },
+    owner: {
+        type: String,
+        trim: true,
+        required: true,
     }
 
 });
