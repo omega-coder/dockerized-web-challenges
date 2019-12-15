@@ -10,9 +10,9 @@ app.secret_key = "shellmates{REDACTED}"
 app.config["LEVEL"] = os.environ.get('SSTI_LEVEL')
 
 if app.config["LEVEL"] is not None:
-    template_name = "level_{}.html".format(app.config['LEVEL'])
+    template_name = "level_{}.html.j2".format(app.config['LEVEL'])
 else:
-    template_name = "level_1.html"
+    template_name = "level_1.html.j2"
 
 
 @app.route("/", methods=["POST", "GET"])

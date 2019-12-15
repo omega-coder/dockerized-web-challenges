@@ -16,14 +16,14 @@ def exploit_filter(exploit):
 @app.route("/", methods=["POST", "GET"])
 def index():
     if request.method == "GET":
-        rendered_template = render_template("level_3.html", exploit=None, message=None)
+        rendered_template = render_template("level_3.html.j2", exploit=None, message=None)
         return render_template_string(rendered_template), 200
 
     else:
         exploit = request.form['exploit']
         message, exploit = exploit_filter(exploit)
         result = [message, exploit]
-        return render_template_string(render_template("level_3.html", result=result)), 200
+        return render_template_string(render_template("level_3.html.j2", result=result)), 200
 
 if __name__ == "__main__":
     app.run(debug=True, port=9000, host='0.0.0.0')
