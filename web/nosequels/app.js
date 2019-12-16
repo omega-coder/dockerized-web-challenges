@@ -37,7 +37,7 @@ function validateUser(req, res, next) {
         if (err) {
             res.json({
                 status: "error",
-                message: err.message,
+                message: 'x-access-token header is missing from request',
                 data: null
             });
         } else {
