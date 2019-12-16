@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nosql_challenge
+    restart: unless-stopped
+    ports:
+      - "31030:3000"
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - challenge-network
+    command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon app.js
+
+  db:
+    image: mongo:4.1.8-xenial
+    container_name: db
+    restart: unless-stopped
+    volumes:
+      - data:/data/db
+    networks:
+      - challenge-network
+
+networks:
+  challenge-network:
+    driver: bridge
+
+volumes:
+  data:
+  node_modules:
