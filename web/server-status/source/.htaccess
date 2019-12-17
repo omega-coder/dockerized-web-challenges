@@ -1,4 +1,0 @@
-<Files "server-status">
-    Require ip 127.0.0.0/8
-    Require ip ::1
-</Files>
