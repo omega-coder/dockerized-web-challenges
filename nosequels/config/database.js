@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoDB = 'mongodb://db/nosql_challenge';
+const mongoDB = 'mongodb://localhost/nosql_challenge';
 
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
