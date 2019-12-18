@@ -1,12 +1,16 @@
 const express = require("express");
 const logger = require("morgan");
-const users = require('./routes/users');
-const courses = require('./routes/courses');
+const path = require('path');
+const usersAPI = require('./routes/api/users');
+const coursesAPI = require('./routes/api/courses');
 const bodyParser = require("body-parser");
 const mongoose = require('./config/database');
 var jwt = require('jsonwebtoken');
 
 const app = express();
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+app.use(express.static(path.join(__dirname, "assets")));
 
 app.set('secret_key', '7bea58b7f18d965c1fab28292fd96ed719428b30');
 
@@ -17,7 +21,7 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
     "extended": false
 }));
-
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     res.json({
@@ -25,8 +29,8 @@ app.get('/', function (req, res) {
     });
 });
 
-app.use('/users', users);
-app.use('/courses', validateUser, courses);
+app.use('/api/users', usersAPI);
+app.use('/api/courses', validateUser, coursesAPI);
 
 app.get('/favicon.ico', function (req, res) {
     res.sendStatus(204);
