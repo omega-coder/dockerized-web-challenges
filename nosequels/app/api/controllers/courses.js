@@ -1,4 +1,4 @@
-const courseModel = require('../models/courses');
+const courseModel = require('../../../models/courses');
 
 module.exports = {
     getById: function (req, res, next) {
