@@ -4,7 +4,6 @@ const router = express.Router();
 const courseController = require('../../app/ui/controllers/courses');
 
 router.get('/', courseController.getAll);
-router.get('/:courseId', courseController.getById);
 
 
 module.exports = router;
