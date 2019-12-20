@@ -1,0 +1,12 @@
+extends layout
+
+block variables
+  - var title = "Home"
+
+block content
+  h2.text-center Security courses app
+  .row
+    .offset-sm-2.col-sm-8
+      .jumbotron.text-center.
+        Welcome to my web security courses app, have fun with the courses. If you can view the hidden course we will give you a 80% discount on all our web security courses
+      a.btn.btn-success.btn-block(href='/courses') view courses    
